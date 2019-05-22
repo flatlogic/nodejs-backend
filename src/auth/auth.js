@@ -28,10 +28,10 @@ passport.use(new GoogleStrategy({
     passReqToCallback: true
   },
   function (request, accessToken, refreshToken, profile, done) {
-    db.User.findOrCreate({ where: {username: profile.email}}).then(([user, created]) => {
+    db.User.findOrCreate({ where: {email: profile.email}}).then(([user, created]) => {
       const body = {
         id: user.id,
-        username: user.username
+        email: user.email
       };
       const token = helpers.jwtSign({user: body});
       return done(null, {token});
@@ -47,11 +47,11 @@ passport.use(new MicrosoftStrategy({
     passReqToCallback: true
   },
   function (request, accessToken, refreshToken, profile, done) {
-  const username = profile._json.mail || profile._json.userPrincipalName;
-    db.User.findOrCreate({where: {username}}).then(([user, created]) => {
+  const email = profile._json.mail || profile._json.userPrincipalName;
+    db.User.findOrCreate({where: {email}}).then(([user, created]) => {
       const body = {
         id: user.id,
-        username: user.username
+        email: user.email
       };
       const token = helpers.jwtSign({user: body});
       return done(null, {token});
