@@ -4,7 +4,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import passport from "passport";
 
-import ecommerce from"./routes/ecommerce";
+import products from"./routes/products";
 import user from"./routes/user";
 
 const app = express();
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(cors());
-app.use('/ecommerce', passport.authenticate("jwt", {session: false}), ecommerce);
+app.use('/products', passport.authenticate("jwt", {session: false}), products);
 app.use('/user', user);
 db.sequelize.sync().then(() => {
     app.listen(port, function () {

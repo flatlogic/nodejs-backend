@@ -1,6 +1,6 @@
 'use strict';
-import bcrypt from "bcrypt";
-import config from "../../config";
+const bcrypt = require("bcrypt");
+const config = require("../../config");
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
