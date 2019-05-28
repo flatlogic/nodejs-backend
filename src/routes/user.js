@@ -21,7 +21,7 @@ router.post('/signup', (req, res) => {
 router.post('/signin/local', (req, res) => {
   User.findOne({
     where: {
-      email: req.body.login,
+      email: req.body.email,
     }
   }).then(user => {
     bcrypt.compare(req.body.password, user.password).then((equal) => {
