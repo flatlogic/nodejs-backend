@@ -56,7 +56,7 @@ router.get('/signin/google/callback', passport.authenticate("google", {failureRe
   }
   );
 
-router.get('/signin/microsoft', passport.authenticate("microsoft", {scope: ["openid", "https://graph.microsoft.com/user.read", "email"]}));
+router.get('/signin/microsoft', passport.authenticate("microsoft", {scope: ["https://graph.microsoft.com/user.read openid"]}));
 
 router.get('/signin/microsoft/callback', passport.authenticate("microsoft", {failureRedirect: "/login", session: false}),
   function (req, res) {

@@ -31,7 +31,9 @@ passport.use(new GoogleStrategy({
     db.User.findOrCreate({ where: {email: profile.email}}).then(([user, created]) => {
       const body = {
         id: user.id,
-        email: user.email
+        email: user.email,
+        name: profile.displayName,
+        avatar: profile.picture
       };
       const token = helpers.jwtSign({user: body});
       return done(null, {token});
@@ -51,7 +53,8 @@ passport.use(new MicrosoftStrategy({
     db.User.findOrCreate({where: {email}}).then(([user, created]) => {
       const body = {
         id: user.id,
-        email: user.email
+        email: user.email,
+        name: profile.displayName
       };
       const token = helpers.jwtSign({user: body});
       return done(null, {token});
