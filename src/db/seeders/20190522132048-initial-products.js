@@ -6,54 +6,110 @@ module.exports = {
             {
                 img: 'static/media/img1.jpg',
                 title: 'trainers',
-                description: 'Trainers In White',
+                subtitle: 'Trainers In White',
                 price: 76,
                 rating: 4.6,
+                description_1: "Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies, or trainers) are shoes primarily designed for sports or other forms of physical exercise, but which are now also often used for everyday wear.",
+                description_2: "The term generally describes a type of footwear with a flexible sole made of rubber or synthetic material and an upper part made of leather or synthetic materials.",
+                code: 135234,
+                hashtag: "whitetrainers",
+                technology: [
+                    "Ollie patch",
+                    "Cup soles",
+                    "Vulcanized rubber soles"
+                ],
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
             {
                 img: 'static/media/img2.jpg',
                 title: 'boots',
-                description: 'Trainers In Blue',
+                subtitle: 'Trainers In Blue',
                 price: 45,
                 rating: 4.6,
+                description_1: "Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies, or trainers) are shoes primarily designed for sports or other forms of physical exercise, but which are now also often used for everyday wear.",
+                description_2: "The term generally describes a type of footwear with a flexible sole made of rubber or synthetic material and an upper part made of leather or synthetic materials.",
+                code: 135234,
+                hashtag: "whitetrainers",
+                technology: [
+                    "Ollie patch",
+                    "Cup soles",
+                    "Vulcanized rubber soles"
+                ],
+                discount: 20,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
             {
                 img: 'static/media/img3.jpg',
                 title: 'flat sandals',
-                description: 'Trainers In White',
+                subtitle: 'Trainers In White',
                 price: 55,
                 rating: 4.6,
+                description_1: "Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies, or trainers) are shoes primarily designed for sports or other forms of physical exercise, but which are now also often used for everyday wear.",
+                description_2: "The term generally describes a type of footwear with a flexible sole made of rubber or synthetic material and an upper part made of leather or synthetic materials.",
+                code: 135234,
+                hashtag: "whitetrainers",
+                technology: [
+                    "Ollie patch",
+                    "Cup soles",
+                    "Vulcanized rubber soles"
+                ],
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
             {
                 img: 'static/media/img4.jpg',
                 title: 'trainers',
-                description: 'Trainers In White',
+                subtitle: 'Trainers In White',
                 price: 76,
                 rating: 4.6,
+                description_1: "Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies, or trainers) are shoes primarily designed for sports or other forms of physical exercise, but which are now also often used for everyday wear.",
+                description_2: "The term generally describes a type of footwear with a flexible sole made of rubber or synthetic material and an upper part made of leather or synthetic materials.",
+                code: 135234,
+                hashtag: "whitetrainers",
+                technology: [
+                    "Ollie patch",
+                    "Cup soles",
+                    "Vulcanized rubber soles"
+                ],
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
             {
                 img: 'static/media/img5.jpeg',
                 title: 'boots',
-                description: 'Trainers In Blue',
+                subtitle: 'Trainers In Blue',
                 price: 45,
                 rating: 4.6,
+                description_1: "Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies, or trainers) are shoes primarily designed for sports or other forms of physical exercise, but which are now also often used for everyday wear.",
+                description_2: "The term generally describes a type of footwear with a flexible sole made of rubber or synthetic material and an upper part made of leather or synthetic materials.",
+                code: 135234,
+                hashtag: "whitetrainers",
+                technology: [
+                    "Ollie patch",
+                    "Cup soles",
+                    "Vulcanized rubber soles"
+                ],
+                discount: 20,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
             {
                 img: 'static/media/img6.jpg',
                 title: 'flat sandals',
-                description: 'Trainers In White',
+                subtitle: 'Trainers In White',
                 price: 55,
                 rating: 4.6,
+                description_1: "Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies, or trainers) are shoes primarily designed for sports or other forms of physical exercise, but which are now also often used for everyday wear.",
+                description_2: "The term generally describes a type of footwear with a flexible sole made of rubber or synthetic material and an upper part made of leather or synthetic materials.",
+                code: 135234,
+                hashtag: "whitetrainers",
+                technology: [
+                    "Ollie patch",
+                    "Cup soles",
+                    "Vulcanized rubber soles"
+                ],
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
