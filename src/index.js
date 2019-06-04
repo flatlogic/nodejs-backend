@@ -25,6 +25,6 @@ app.use('/analytics', passport.authenticate("jwt", {session: false}), analytics)
 app.use('/user', user);
 db.sequelize.sync().then(() => {
     app.listen(port, function () {
-        console.log(`Example app listening on port ${port}!`);
+        console.log(`Example app listening on port ${port}!!`);
     });
 });
