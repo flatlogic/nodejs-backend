@@ -7,7 +7,7 @@ module.exports = {
     secret_key: "HUEyqESqgQ1yTwzVlO6wprC9Kf1J1xuA",
     host: process.env.HOST || "http://localhost",
     port: process.env.NODE_ENV === "production" ? "" : "8080",
-    hostUI: process.env.NODE_ENV === "production" ? "https://joulon-flatlogic.herokuapp.com" : "http://localhost",
+    hostUI: process.env.NODE_ENV === "production" ? "https://demo.flatlogic.com/sing-app-react" : "http://localhost",
     portUI: process.env.NODE_ENV === "production" ? "" : "3000",
     google: {
         clientId: "592707349093-3ab6a0seutt1qpiiq8u0k3in5k7f226d.apps.googleusercontent.com",
