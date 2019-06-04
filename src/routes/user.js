@@ -64,7 +64,7 @@ router.get('/signin/google', passport.authenticate("google", {scope: ["profile",
 router.get('/signin/google/callback', passport.authenticate("google", {failureRedirect: "/login", session: false}),
   function (req, res) {
     let token = req.user.token;
-    res.redirect(config.hostUI + ":" + config.portUI + "/#/login?token=" + token);
+    res.redirect(config.hostUI + `${config.portUI ? `:${config.portUI}` : ``}` + "/#/login?token=" + token);
   }
   );
 
@@ -73,7 +73,7 @@ router.get('/signin/microsoft', passport.authenticate("microsoft", {scope: ["htt
 router.get('/signin/microsoft/callback', passport.authenticate("microsoft", {failureRedirect: "/login", session: false}),
   function (req, res) {
     let token = req.user.token;
-    res.redirect(config.hostUI + ":" + config.portUI + "/#/login?token=" + token);
+    res.redirect(config.hostUI + `${config.portUI ? `:${config.portUI}` : ``}` + "/#/login?token=" + token);
   }
 );
 
