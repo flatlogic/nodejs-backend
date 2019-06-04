@@ -8,14 +8,26 @@ import helpers from "../helpers/helpers";
 const router = express.Router();
 
 router.post('/signup', (req, res) => {
-  bcrypt.hash(req.body.password, config.bcrypt.saltRounds, (err, hash) => {
-    User.create({
-      email: req.body.email,
-      password: hash
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
     }).then((user) => {
-      res.json(user);
-    });
-  });
+        if (user) {
+            res.status(400).send("User with this email is already exists");
+        } else {
+            bcrypt.hash(req.body.password, config.bcrypt.saltRounds, (err, hash) => {
+                User.create({
+                    email: req.body.email,
+                    password: hash
+                }).then((user) => {
+                    res.json(user);
+                });
+            });
+        }
+    }).catch((err) => {
+        res.status(err.statusCode).send(err.message);
+    })
 });
 
 router.post('/signin/local', (req, res) => {
@@ -41,7 +53,7 @@ router.post('/signin/local', (req, res) => {
       }
     });
   }).catch(() => {
-    res.status(400).send("User with this name does not exist");
+    res.status(400).send("User with this email does not exist");
   })
 
 });
