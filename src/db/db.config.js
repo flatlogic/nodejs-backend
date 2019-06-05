@@ -2,7 +2,7 @@ module.exports = {
   development: {
     "username": "admin",
     "password": "admin_pass",
-    "database": "sing_app_db",
+    "database": "nodejs_backend_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

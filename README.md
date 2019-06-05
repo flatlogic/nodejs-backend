@@ -34,11 +34,19 @@
   - `psql postgres -U admin`
 
 - Type this command to creating a new database.
-  - `postgres=> CREATE DATABASE sing_app_db;`
+  - `postgres=> CREATE DATABASE nodejs_backend_db;`
 
 - Then give that new user privileges to the new database then quit the `psql`.
-  - `postgres=> GRANT ALL PRIVILEGES ON DATABASE sing_app_db TO admin;`
+  - `postgres=> GRANT ALL PRIVILEGES ON DATABASE nodejs_backend_db TO admin;`
   - `postgres=> \q`
 
 ###### 4. Run db migrations and seeds:
  - `sequelize db:migrate && sequelize db:seed:all`
+ 
+ ------------
+ 
+ ##### Start development build:
+ - `yarn start:dev`
+ 
+ ##### Start production build:
+ - `yarn start`
