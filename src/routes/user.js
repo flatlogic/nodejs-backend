@@ -59,21 +59,25 @@ router.post('/signin/local', (req, res) => {
 });
 
 
-router.get('/signin/google', passport.authenticate("google", {scope: ["profile", "email"]}));
+router.get('/signin/google', (req, res, next) => {
+    passport.authenticate("google", {scope: ["profile", "email"], state: req.query.app})(req, res, next);
+});
 
 router.get('/signin/google/callback', passport.authenticate("google", {failureRedirect: "/login", session: false}),
   function (req, res) {
     let token = req.user.token;
-    res.redirect(config.hostUI + `${config.portUI ? `:${config.portUI}` : ``}` + "/#/login?token=" + token);
+    res.redirect(config.hostUI + `${config.portUI ? `:${config.portUI}` : ``}` + `${req.query.state ? `/${req.query.state}` : ``}` + "/#/login?token=" + token);
   }
   );
 
-router.get('/signin/microsoft', passport.authenticate("microsoft", {scope: ["https://graph.microsoft.com/user.read openid"]}));
+router.get('/signin/microsoft', (req, res, next) => {
+    passport.authenticate("microsoft", {scope: ["https://graph.microsoft.com/user.read openid"], state: req.query.app})(req, res, next);
+});
 
 router.get('/signin/microsoft/callback', passport.authenticate("microsoft", {failureRedirect: "/login", session: false}),
   function (req, res) {
     let token = req.user.token;
-    res.redirect(config.hostUI + `${config.portUI ? `:${config.portUI}` : ``}` + "/#/login?token=" + token);
+    res.redirect(config.hostUI + `${config.portUI ? `:${config.portUI}` : ``}` + `${req.query.state ? `/${req.query.state}` : ``}` + "/#/login?token=" + token);
   }
 );
 
