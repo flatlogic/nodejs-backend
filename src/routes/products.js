@@ -1,7 +1,17 @@
 import express from "express";
 import { Product } from "../db/models";
+import config from "../config";
+import fs from "fs";
+import path from "path";
 
 const router = express.Router();
+
+router.get('/images-list', (req, res) => {
+  fs.readdir(path.resolve(process.env.PWD + '/public/assets/products/'), (err, files) => {
+    files = files.filter(item => !(/(^|\/)\.[^\/\.]/g).test(item)).map(f => config.apiUrl + '/assets/products/' + f);
+    res.json(files);
+  });
+});
 
 router.get('/', (req, res) => {
     Product.findAll().then(products => {

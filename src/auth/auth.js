@@ -8,7 +8,6 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const MicrosoftStrategy = require('passport-microsoft').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 
-const apiURL = `${config.host}${config.port ? `:${config.port}`: ``}`;
 
 passport.use(new JWTstrategy({
   secretOrKey: config.secret_key,
@@ -24,7 +23,7 @@ passport.use(new JWTstrategy({
 passport.use(new GoogleStrategy({
     clientID: config.google.clientId,
     clientSecret: config.google.clientSecret,
-    callbackURL: apiURL + "/user/signin/google/callback",
+    callbackURL: config.apiURL + "/user/signin/google/callback",
     passReqToCallback: true
   },
   function (request, accessToken, refreshToken, profile, done) {
@@ -45,7 +44,7 @@ passport.use(new GoogleStrategy({
 passport.use(new MicrosoftStrategy({
     clientID: config.microsoft.clientId,
     clientSecret: config.microsoft.clientSecret,
-    callbackURL: apiURL + "/user/signin/microsoft/callback",
+    callbackURL: config.apiURL + "/user/signin/microsoft/callback",
     passReqToCallback: true
   },
   function (request, accessToken, refreshToken, profile, done) {

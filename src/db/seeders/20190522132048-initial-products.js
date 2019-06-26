@@ -1,10 +1,11 @@
 'use strict';
+const config = require('../../config');
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert('Products', [
             {
-                img: 'static/media/img1.jpg',
+                img: config.apiUrl + '/assets/products/img1.jpg',
                 title: 'trainers',
                 subtitle: 'Trainers In White',
                 price: 76,
@@ -22,7 +23,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: 'static/media/img2.jpg',
+                img: config.apiUrl + '/assets/products/img2.jpg',
                 title: 'boots',
                 subtitle: 'Trainers In Blue',
                 price: 45,
@@ -41,7 +42,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: 'static/media/img3.jpg',
+                img: config.apiUrl + '/assets/products/img3.jpg',
                 title: 'flat sandals',
                 subtitle: 'Trainers In White',
                 price: 55,
@@ -59,7 +60,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: 'static/media/img4.jpg',
+                img: config.apiUrl + '/assets/products/img4.jpg',
                 title: 'trainers',
                 subtitle: 'Trainers In White',
                 price: 76,
@@ -77,7 +78,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: 'static/media/img5.jpeg',
+                img: config.apiUrl + '/assets/products/img5.jpeg',
                 title: 'boots',
                 subtitle: 'Trainers In Blue',
                 price: 45,
@@ -96,7 +97,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: 'static/media/img6.jpg',
+                img: config.apiUrl + '/assets/products/img6.jpg',
                 title: 'flat sandals',
                 subtitle: 'Trainers In White',
                 price: 55,
@@ -114,7 +115,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: 'static/media/img1.jpg',
+                img: config.apiUrl + '/assets/products/img1.jpg',
                 title: 'trainers',
                 subtitle: 'Trainers In White',
                 price: 76,
@@ -132,7 +133,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: 'static/media/img2.jpg',
+                img: config.apiUrl + '/assets/products/img2.jpg',
                 title: 'boots',
                 subtitle: 'Trainers In Blue',
                 price: 45,
@@ -151,7 +152,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: 'static/media/img3.jpg',
+                img: config.apiUrl + '/assets/products/img3.jpg',
                 title: 'flat sandals',
                 subtitle: 'Trainers In White',
                 price: 55,
@@ -169,7 +170,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: 'static/media/img4.jpg',
+                img: config.apiUrl + '/assets/products/img4.jpg',
                 title: 'trainers',
                 subtitle: 'Trainers In White',
                 price: 76,
@@ -187,7 +188,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: 'static/media/img5.jpeg',
+                img: config.apiUrl + '/assets/products/img5.jpeg',
                 title: 'boots',
                 subtitle: 'Trainers In Blue',
                 price: 45,
@@ -206,7 +207,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: 'static/media/img6.jpg',
+                img: config.apiUrl + '/assets/products/img6.jpg',
                 title: 'flat sandals',
                 subtitle: 'Trainers In White',
                 price: 55,
