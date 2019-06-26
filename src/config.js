@@ -19,7 +19,7 @@ var config = {
   }
 };
 
-config.host = process.env.NODE_ENV === "production" ? config.remote || "http://localhost";
+config.host = process.env.NODE_ENV === "production" ? config.remote : "http://localhost";
 config.apiUrl = `${config.host}${config.port ? `:${config.port}` : ``}`;
 
 module.exports = config;
