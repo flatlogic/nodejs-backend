@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "nodemon --exec babel-node src/index.js",
     "build": "babel src --out-dir build",
-    "start": "npm run build && NODE_ENV=production HOST=https://flatlogic-node-backend.herokuapp.com node ./build/index.js",
+    "start": "npm run build && NODE_ENV=production node ./build/index.js",
     "products:update": "sequelize db:seed:undo --seed 20190522132048-initial-products.js && sequelize db:seed --seed 20190522132048-initial-products.js"
   },
   "keywords": [],

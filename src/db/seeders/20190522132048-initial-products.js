@@ -5,7 +5,7 @@ module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert('Products', [
             {
-                img: config.apiUrl + '/assets/products/img1.jpg',
+                img: config.remote + '/assets/products/img1.jpg',
                 title: 'trainers',
                 subtitle: 'Trainers In White',
                 price: 76,
@@ -23,7 +23,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: config.apiUrl + '/assets/products/img2.jpg',
+                img: config.remote + '/assets/products/img2.jpg',
                 title: 'boots',
                 subtitle: 'Trainers In Blue',
                 price: 45,
@@ -42,7 +42,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: config.apiUrl + '/assets/products/img3.jpg',
+                img: config.remote + '/assets/products/img3.jpg',
                 title: 'flat sandals',
                 subtitle: 'Trainers In White',
                 price: 55,
@@ -60,7 +60,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: config.apiUrl + '/assets/products/img4.jpg',
+                img: config.remote + '/assets/products/img4.jpg',
                 title: 'trainers',
                 subtitle: 'Trainers In White',
                 price: 76,
@@ -78,7 +78,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: config.apiUrl + '/assets/products/img5.jpeg',
+                img: config.remote + '/assets/products/img5.jpeg',
                 title: 'boots',
                 subtitle: 'Trainers In Blue',
                 price: 45,
@@ -97,7 +97,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: config.apiUrl + '/assets/products/img6.jpg',
+                img: config.remote + '/assets/products/img6.jpg',
                 title: 'flat sandals',
                 subtitle: 'Trainers In White',
                 price: 55,
@@ -115,7 +115,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: config.apiUrl + '/assets/products/img1.jpg',
+                img: config.remote + '/assets/products/img1.jpg',
                 title: 'trainers',
                 subtitle: 'Trainers In White',
                 price: 76,
@@ -133,7 +133,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: config.apiUrl + '/assets/products/img2.jpg',
+                img: config.remote + '/assets/products/img2.jpg',
                 title: 'boots',
                 subtitle: 'Trainers In Blue',
                 price: 45,
@@ -152,7 +152,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: config.apiUrl + '/assets/products/img3.jpg',
+                img: config.remote + '/assets/products/img3.jpg',
                 title: 'flat sandals',
                 subtitle: 'Trainers In White',
                 price: 55,
@@ -170,7 +170,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: config.apiUrl + '/assets/products/img4.jpg',
+                img: config.remote + '/assets/products/img4.jpg',
                 title: 'trainers',
                 subtitle: 'Trainers In White',
                 price: 76,
@@ -188,7 +188,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: config.apiUrl + '/assets/products/img5.jpeg',
+                img: config.remote + '/assets/products/img5.jpeg',
                 title: 'boots',
                 subtitle: 'Trainers In Blue',
                 price: 45,
@@ -207,7 +207,7 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                img: config.apiUrl + '/assets/products/img6.jpg',
+                img: config.remote + '/assets/products/img6.jpg',
                 title: 'flat sandals',
                 subtitle: 'Trainers In White',
                 price: 55,
