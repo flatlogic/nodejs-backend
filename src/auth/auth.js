@@ -23,7 +23,7 @@ passport.use(new JWTstrategy({
 passport.use(new GoogleStrategy({
     clientID: config.google.clientId,
     clientSecret: config.google.clientSecret,
-    callbackURL: config.apiURL + "/user/signin/google/callback",
+    callbackURL: config.apiUrl + "/user/signin/google/callback",
     passReqToCallback: true
   },
   function (request, accessToken, refreshToken, profile, done) {
@@ -44,7 +44,7 @@ passport.use(new GoogleStrategy({
 passport.use(new MicrosoftStrategy({
     clientID: config.microsoft.clientId,
     clientSecret: config.microsoft.clientSecret,
-    callbackURL: config.apiURL + "/user/signin/microsoft/callback",
+    callbackURL: config.apiUrl + "/user/signin/microsoft/callback",
     passReqToCallback: true
   },
   function (request, accessToken, refreshToken, profile, done) {
