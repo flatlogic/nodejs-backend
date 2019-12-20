@@ -66,7 +66,7 @@ router.get('/signin/google', (req, res, next) => {
 router.get('/signin/google/callback', passport.authenticate("google", {failureRedirect: "/login", session: false}),
   function (req, res) {
     let token = req.user.token;
-    res.redirect(config.hostUI + `${config.portUI ? `:${config.portUI}` : ``}` + `${req.query.state ? `/${req.query.state}` : ``}` + "/#/login?token=" + token);
+    res.redirect((req.hostname === 'flatlogic.github.io' ? 'https://flatlogic.github.io' : config.hostUI + `${config.portUI ? `:${config.portUI}` : ``}`) + `${req.query.state ? `/${req.query.state}` : ``}` + "/#/login?token=" + token);
   }
   );
 
