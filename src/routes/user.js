@@ -65,10 +65,9 @@ router.get('/signin/google', (req, res, next) => {
 
 router.get('/signin/google/callback', passport.authenticate("google", {failureRedirect: "/login", session: false}),
   function (req, res) {
-    let token = req.user.token;
-    res.redirect(config.hostUI + `${config.portUI ? `:${config.portUI}` : ``}` + `${req.query.state ? `/${req.query.state}` : ``}` + "/#/login?token=" + token);
+    socialRedirect(res, req.query.state, req.user.token, config);
   }
-  );
+);
 
 router.get('/signin/microsoft', (req, res, next) => {
     passport.authenticate("microsoft", {scope: ["https://graph.microsoft.com/user.read openid"], state: req.query.app})(req, res, next);
@@ -76,9 +75,19 @@ router.get('/signin/microsoft', (req, res, next) => {
 
 router.get('/signin/microsoft/callback', passport.authenticate("microsoft", {failureRedirect: "/login", session: false}),
   function (req, res) {
-    let token = req.user.token;
-    res.redirect(config.hostUI + `${config.portUI ? `:${config.portUI}` : ``}` + `${req.query.state ? `/${req.query.state}` : ``}` + "/#/login?token=" + token);
+    socialRedirect(res, req.query.state, req.user.token, config);
   }
 );
+
+function socialRedirect(res, state, token, config) {
+  let url;
+  let fullPath = /^http(s?):\/\//.test(state);
+  if (fullPath) {
+    url = state;
+  } else {
+    url = config.hostUI + `${config.portUI ? `:${config.portUI}` : ``}` + `${state ? `/${state}` : ``}`;
+  }
+  res.redirect(url + "/#/login?token=" + token);
+}
 
 module.exports = router;
