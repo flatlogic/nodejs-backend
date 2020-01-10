@@ -28,10 +28,9 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    Product.update(req.body, {where: {id: req.params.id}}).then(([product]) => {
-        res.json(product);
+    Product.update(req.body, {where: {id: req.params.id}, returning: true, plain: true}).then(([, model]) => {
+        res.json(model.dataValues);
     })
-
 });
 
 router.post('/', (req, res) => {
