@@ -32,7 +32,7 @@ db.sequelize.sync().then(() => {
       console.log(`Example app listening on port ${port}!!`);
   });
   cron.schedule('* */2 * * *', () => {
-    exec('yarn products:update', (err) => {
+    exec('npm run products:update', (err) => {
       if (err) {
         console.error(err);
       }
