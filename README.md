@@ -18,35 +18,41 @@
   - `sudo apt update`
   - `sudo apt install postgresql postgresql-contrib`
 
-###### 2. Install sequelize-cli:
-- `sudo npm install -g sequelize-cli`
-
-###### 3. Create db and admin user:
+###### 2. Create db and admin user:
  - Before run and test connection, make sure you have created a database as described in the above configuration. You can use the `psql` command to create a user and database.
-   - `psql postgres --u postgres`
-
-- Next, type this command for creating a new user with password then give access for creating the database.
-  - `postgres-# CREATE ROLE admin WITH LOGIN PASSWORD 'admin_pass';`
-  - `postgres-# ALTER ROLE admin CREATEDB;`
-
-- Quit `psql` then log in again using the new user that previously created.
-  - `postgres-# \q`
-  - `psql postgres -U admin`
+   - `psql -U postgres`
 
 - Type this command to creating a new database.
-  - `postgres=> CREATE DATABASE nodejs_backend_db;`
-
-- Then give that new user privileges to the new database then quit the `psql`.
-  - `postgres=> GRANT ALL PRIVILEGES ON DATABASE nodejs_backend_db TO admin;`
+  - `postgres=> CREATE DATABASE development OWNER postgres;`
   - `postgres=> \q`
-
-###### 4. Run db migrations and seeds:
- - `sequelize db:migrate && sequelize db:seed:all`
  
  ------------
+
+ ##### Setup database tables:
+ - `yarn reset`
  
  ##### Start development build:
  - `yarn start:dev`
- 
+
  ##### Start production build:
  - `yarn start`
+
+ ------------
+
+ #### Api Documentation (Swagger)
+
+ http://localhost:8080/api-docs (local host)
+ 
+ http://host_name/api-docs
+
+ ------------
+
+ ##### Docker:
+ 
+ See instructions in a `docker` folder if you want to run this backend alongside with a frontend and a database.
+ In this case you don't need to build docker image manually and run commands below.
+ 
+ 1. Make sure you have Postgres installed locally like in [Adjust local db](#adjust-local-db):
+ 2. Build an image `docker build -t um-backend-image .`
+ 3. Run a container `docker run -p 8080:8080 -d um-backend-image`
+ 4. Now the api should be available by `http://localhost:8080/api`

@@ -1,0 +1,516 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: User Management Template Backend
+  description: Flatlogic user management backend allows you to create a fully workable data management (CRUD) application. You can perform all major operations with users - create, delete and distribute roles. You can either integrate this template into existing applications or create a new one based on it.
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: /
+
+tags:
+  - name: Auth
+    description: Authorization operations
+  - name: User
+    description: Operations about users
+  - name: Product
+    description: Operations about products
+
+paths:
+  /api/auth/signin/local:
+    post:
+      tags:
+        - Auth
+      summary: Logs user into the system
+      description: Authorization operation
+
+      requestBody:
+        description: Set valid user email and password
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auth'
+        required: true
+      responses:
+        200:
+          description: Successful login
+        400:
+          description: Invalid username/password supplied
+          content: { }
+      x-codegen-request-body-name: body
+  /api/auth/me:
+    get:
+      tags:
+        - Auth
+      summary: Get current authorized user info
+      description: Get current authorized user info
+      responses:
+        200:
+          description: Successful retrieval of current authorized user data
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+      security:
+        - bearerAuth: [ ]
+  /api/users:
+    get:
+      tags:
+        - User
+      summary: Get all users
+      description: Gets all the users
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+      security:
+        - bearerAuth: [ ]
+    post:
+      tags:
+        - User
+      summary: Create new user
+      requestBody:
+        required: true
+        description: Create new user (email field is required)
+        content:
+          application/json:
+            schema:
+              properties:
+                data:
+                  description: Data of the created user
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    email:
+                      type: string
+                    no_disable:
+                      type: boolean
+                      default: false
+                    firstName:
+                      type: string
+                    password:
+                      type: string
+                    role:
+                      type: string
+                      enum:
+                        - admin
+                        - user
+                      default: user
+                    provider:
+                      type: string
+                      default: local
+                    lastName:
+                      type: string
+                    phoneNumber:
+                      type: string
+                  required:
+                    - email
+      responses:
+        200:
+          description: Successfully created new user
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+        405:
+          description: Invalid input data
+      security:
+        - bearerAuth: []
+      x-codegen-request-body-name: body
+  /api/users/autocomplete:
+    get:
+      tags:
+        - User
+      summary: Get users by autocomplete
+      description: Get users by autocomplete
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    label:
+                      type: string
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+        405:
+          description: Invalid input data
+      security:
+        - bearerAuth: [ ]
+  /api/users/{id}:
+    get:
+      tags:
+        - User
+      summary: Get selected user data
+      description: Get selected user
+      parameters:
+        - name: id
+          in: path
+          description: ID of user to get
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Invalid ID supplied
+          content: { }
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+        404:
+          description: User not found
+          content: { }
+      security:
+        - bearerAuth: [ ]
+    put:
+      tags:
+        - User
+      summary: Update the data of the selected user
+      parameters:
+        - name: id
+          in: path
+          description: ID of user to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: ID of updated user (required), and updated user data.
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  description: ID of the updated user
+                  type: string
+                data:
+                  description: Data of the updated user
+                  type: object
+                  $ref: "#/components/schemas/User"
+              required:
+                - id
+        required: true
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Invalid ID supplied
+          content: { }
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+        404:
+          description: User not found
+          content: { }
+      security:
+        - bearerAuth: [ ]
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+        - User
+      summary: Delete selected user
+      parameters:
+        - name: id
+          in: path
+          description: ID of user to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Invalid ID supplied
+          content: { }
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+        404:
+          description: User not found
+          content: { }
+      security:
+        - bearerAuth: [ ]
+  /api/products:
+    get:
+      tags:
+        - Product
+      summary: Get all products
+      description: Gets all products
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+        404:
+          description: Data not found
+      security:
+        - bearerAuth: [ ]
+    post:
+      tags:
+        - Product
+      summary: Create new product
+      requestBody:
+        description: Create new product
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+        required: true
+      responses:
+        200:
+          description: Successfully created new product
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+        405:
+          description: Invalid input data
+      security:
+        - bearerAuth: []
+  /api/products/images-list:
+    get:
+      tags:
+        - Product
+      summary: Get all products images
+      description: Get all products images
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+        404:
+          description: Data not found
+      security:
+        - bearerAuth: [ ]
+  /api/products/{id}:
+    get:
+      tags:
+        - Product
+      summary: Get selected product
+      description: Get selected product
+      parameters:
+        - name: id
+          in: path
+          description: ID of product to get
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid ID supplied
+          content: { }
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+        404:
+          description: Product not found
+          content: { }
+      security:
+        - bearerAuth: [ ]
+    put:
+      tags:
+        - Product
+      summary: Update the data of the selected product
+      parameters:
+        - name: id
+          in: path
+          description: ID of product to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Set new product data
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid ID supplied
+          content: { }
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+        404:
+          description: Product not found
+          content: { }
+      security:
+        - bearerAuth: [ ]
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+        - Product
+      summary: Delete selected product
+      parameters:
+        - name: id
+          in: path
+          description: ID of product to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid ID supplied
+          content: { }
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+        404:
+          description: Product not found
+          content: { }
+      security:
+        - bearerAuth: [ ]
+components:
+  schemas:
+    Auth:
+      type: object
+      properties:
+        email:
+          type: string
+          default: admin@flatlogic.com
+        password:
+          type: string
+          default: password
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        no_disable:
+          type: boolean
+          default: false
+        firstName:
+          type: string
+        password:
+          type: string
+        role:
+          type: string
+          enum:
+            - admin
+            - user
+          default: user
+        provider:
+          type: string
+          default: local
+        emailVerificationToken:
+          type: string
+        emailVerificationTokenExpiresAt:
+          type: string
+          format: date-time
+        passwordResetToken:
+          type: string
+        passwordResetTokenExpiresAt:
+          type: string
+          format: date-time
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        email:
+          type: string
+          required: true
+        authenticationUid:
+          type: string
+        disabled:
+          type: boolean
+          default: false
+        importHash:
+          type: string
+      xml:
+        name: User
+    Product:
+      type: object
+      properties:
+        img:
+          type: string
+        title:
+          type: string
+        subtitle:
+          type: string
+        price:
+          type: integer
+          format: int64
+        rating:
+          type: integer
+          format: int64
+        description_1:
+          type: string
+        description_2:
+          type: string
+        code:
+          type: integer
+          format: int64
+        hashtag:
+          type: string
+        technology:
+          type: array
+          items:
+            type: string
+        discount:
+          type: integer
+          format: int64
+      xml:
+        name: Product
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
+
+
+

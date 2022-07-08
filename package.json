@@ -1,43 +1,54 @@
 {
-  "name": "sing-app-node",
-  "version": "1.0.0",
-  "description": "",
+  "name": "nodejs_backend",
+  "version": "2.0.0",
   "engines": {
-    "node": "14.16.0"
+    "node": ">=16"
   },
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon --exec babel-node src/index.js",
+    "start": "cross-env NODE_ENV=production nodemon ./src/index.js",
+    "start:dev": "cross-env EMAIL_PASS=UBU2JGC2wEqc nodemon ./src/index.js",
     "build": "babel src --out-dir build",
-    "start": "npm run build && NODE_ENV=production node ./build/index.js",
+    "reset": "cross-env node ./src/db/reset.js",
     "products:update": "sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
-    "bcrypt": "^3.0.6",
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.5",
-    "express": "^4.16.4",
-    "jsonwebtoken": "^8.5.1",
+    "bcrypt": "5.0.1",
+    "cors": "2.8.5",
+    "express": "4.18.1",
+    "formidable": "3.2.4",
+    "global": "^4.4.0",
+    "helmet": "3.23.3",
+    "jsonwebtoken": "8.5.1",
+    "lodash": "4.17.21",
+    "moment": "2.29.4",
+    "mysql2": "2.3.3",
     "node-cron": "^2.0.3",
-    "nodemon": "^1.18.10",
-    "passport": "^0.4.0",
+    "nodemailer": "6.7.7",
+    "passport": "^0.6.0",
     "passport-google-oauth2": "^0.2.0",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0",
     "passport-microsoft": "^0.0.5",
-    "pg": "^7.9.0",
-    "pg-hstore": "^2.3.2",
-    "sequelize": "^5.6.0",
-    "sequelize-cli": "^5.4.0"
+    "pg": "8.7.3",
+    "pg-hstore": "2.3.4",
+    "sequelize": "6.21.2",
+    "sqlite": "4.1.1",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.4.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/node": "^7.2.2",
-    "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.4.4"
+    "cross-env": "6.0.3",
+    "eslint": "^7.32.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "mocha": "10.0.0",
+    "node-mocks-http": "1.11.0",
+    "nodemon": "2.0.19",
+    "prettier": "^2.7.1",
+    "sequelize-cli": "^5.5.1"
   }
 }

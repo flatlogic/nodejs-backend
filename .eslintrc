@@ -1,0 +1,31 @@
+{
+    "ignorePatterns": ["src/db/seeders/*.js"],
+    "plugins": ["prettier"],
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": true }],
+        "prettier/prettier": [
+            "warn",
+            {
+                "usePrettierrc": false,
+                "printWidth": 100,
+                "tabWidth": 2,
+                "useTabs": false,
+                "semi": true,
+                "singleQuote": true,
+                "trailingComma": "all",
+                "endOfLine": "lf",
+                "arrowParens": "avoid"
+            }
+        ]
+    }
+}
