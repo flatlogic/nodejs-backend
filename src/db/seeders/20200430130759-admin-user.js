@@ -1,7 +1,7 @@
 'use strict';
 const bcrypt = require("bcrypt");
 const config = require("../../config");
-const uuidv4 = require('uuid/v4');
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
