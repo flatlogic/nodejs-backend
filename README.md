@@ -1,58 +1,104 @@
-# nodejs-backend
+# 🚀 Flatlogic Node.js Backend - Free but Outdated!
 
-#### Run App on local machine:
+[More Templates](https://flatlogic.com/templates) | [Discord Community](https://discord.gg/flatlogic-community) | [Support Forum](https://flatlogic.com/forum)
 
-------------
+**Heads up! 🚨** This backend is a bit old-school now. For a more up-to-date, efficient, and customizable experience, generate a fresh one with our [Flatlogic Generator](https://flatlogic.com/generator). It's way better. 😉
 
-##### Install local dependencies:
-- `yarn install`
+---
 
-------------
+## 🚀 Quick Start
 
-##### Adjust local db:
-###### 1.  Install postgres:
- - MacOS:
-   - `brew install postgres`
+#### 1. Install dependencies:
+```bash
+yarn install
+```
 
-- Ubuntu:
-  - `sudo apt update`
-  - `sudo apt install postgresql postgresql-contrib`
+---
 
-###### 2. Create db and admin user:
- - Before run and test connection, make sure you have created a database as described in the above configuration. You can use the `psql` command to create a user and database.
-   - `psql -U postgres`
+#### 2. Adjust local database:
 
-- Type this command to creating a new database.
-  - `postgres=> CREATE DATABASE development OWNER postgres;`
-  - `postgres=> \q`
- 
- ------------
+**Step 1: Install PostgreSQL**
 
- ##### Setup database tables:
- - `yarn reset`
- 
- ##### Start development build:
- - `yarn start:dev`
+- **MacOS:**  
+  ```bash
+  brew install postgres
+  ```
+- **Ubuntu:**  
+  ```bash
+  sudo apt update
+  sudo apt install postgresql postgresql-contrib
+  ```
 
- ##### Start production build:
- - `yarn start`
+**Step 2: Create database and user:**
 
- ------------
+```bash
+psql -U postgres
+```
 
- #### Api Documentation (Swagger)
+Then run the following commands inside PostgreSQL:
+```sql
+CREATE DATABASE development OWNER postgres;
+\q
+```
 
- http://localhost:8080/api-docs (local host)
- 
- http://host_name/api-docs
+---
 
- ------------
+#### 3. Setup database tables:
+```bash
+yarn reset
+```
 
- ##### Docker:
- 
- See instructions in a `docker` folder if you want to run this backend alongside with a frontend and a database.
- In this case you don't need to build docker image manually and run commands below.
- 
- 1. Make sure you have Postgres installed locally like in [Adjust local db](#adjust-local-db):
- 2. Build an image `docker build -t um-backend-image .`
- 3. Run a container `docker run -p 8080:8080 -d um-backend-image`
- 4. Now the api should be available by `http://localhost:8080/api`
+#### 4. Start development server:
+```bash
+yarn start:dev
+```
+
+#### 5. Start production build:
+```bash
+yarn start
+```
+
+> **Pro Tip:** If you run into issues, it might be time to check out the Flatlogic Generator instead. 😉
+
+---
+
+## 📜 API Documentation (Swagger)
+
+Once running, check the API docs here:
+- [http://localhost:8080/api-docs](http://localhost:8080/api-docs) (Local)
+- [http://host_name/api-docs](http://host_name/api-docs) (Production)
+
+---
+
+## 🐳 Docker Support
+
+If you'd rather run the backend via Docker, follow these steps:
+
+1. Ensure PostgreSQL is installed as described above.
+2. Build the Docker image:
+   ```bash
+   docker build -t um-backend-image .
+   ```
+3. Run a container:
+   ```bash
+   docker run -p 8080:8080 -d um-backend-image
+   ```
+4. Access the API at:
+   ```bash
+   http://localhost:8080/api
+   ```
+
+---
+
+## 🔥 About Flatlogic
+[Flatlogic](https://flatlogic.com/ai-software-development-agent) builds modern business software so you don't have to. Our AI Software Development Agent helps you generate, deploy, and maintain enterprise applications with minimal effort.
+
+---
+
+## 📜 License
+This backend is free to use, but seriously, consider upgrading with the Flatlogic Generator. 😎
+
+---
+
+> **Questions or feedback?**  
+> Join our [Flatlogic Community Discord](https://discord.gg/flatlogic-community) or visit our [support forum](https://flatlogic.com/forum).
